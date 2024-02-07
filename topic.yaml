@@ -1,0 +1,25 @@
+apiVersion: cluster.redpanda.com/v1alpha1
+kind: Topic
+metadata:
+  name: sample-topic
+spec:
+  kafkaApiSpec:
+    brokers:
+      - redpanda-0.redpanda.jci.svc.cluster.local.:9093
+      - redpanda-1.redpanda.jci.svc.cluster.local.:9093
+      - redpanda-2.redpanda.jci.svc.cluster.local.:9093
+    tls:
+      caCertSecretRef:
+        name: redpanda-default-cert
+        key: "ca.crt"
+    sasl:
+      username: admin
+      passwordSecretRef: 
+        name: redpanda-admin-password
+        key: password
+      mechanism: SCRAM-SHA-512
+  partitions: 15
+  replicationFactor: 3
+  additionalConfig:
+    cleanup.policy: "compact,delete"
+

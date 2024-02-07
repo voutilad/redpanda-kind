@@ -1,0 +1,23 @@
+---
+replicaCount: 3
+clusterDomain: cluster.local
+
+image:
+  repository: docker.redpanda.com/redpandadata/redpanda-operator
+  tag: v2.1.14-23.3.4
+  pullPolicy: Always
+
+configurator:
+  repository: docker.redpanda.com/redpandadata/configurator
+  tag: v2.1.14-23.3.4
+  pullPolicy: Always
+
+logLevel: "debug"
+
+rbac:
+  create: true
+  createAdditionalControllerCRs: true
+  createRPKBundleCRs: true
+
+serviceAccount:
+  create: true

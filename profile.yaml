@@ -1,0 +1,17 @@
+kafka_api:
+    brokers:
+        - redpanda-0.customredpandadomain.local:31092
+        - redpanda-1.customredpandadomain.local:31092
+        - redpanda-2.customredpandadomain.local:31092
+    tls:
+        ca_file: ca.crt
+    sasl:
+        user: admin
+        mechanism: SCRAM-SHA-512
+admin_api:
+    addresses:
+        - redpanda-0.customredpandadomain.local:31644
+        - redpanda-1.customredpandadomain.local:31644
+        - redpanda-2.customredpandadomain.local:31644
+    tls:
+        ca_file: ca.crt

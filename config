@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# set your k8s namespace here if you want to change it
+RP_NAMESPACE="redpanda"
+
+# determine the host architecture
+if [ x`uname -m` = "xaarch64" ]; then
+    ARCH=arm64
+else
+    ARCH=amd64
+fi
